@@ -3,12 +3,12 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
-target 'study_flatlist_multi_selection' do
+target 'app' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
 
-  target 'study_flatlist_multi_selectionTests' do
+  target 'appTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -20,14 +20,5 @@ target 'study_flatlist_multi_selection' do
   use_flipper!
   post_install do |installer|
     flipper_post_install(installer)
-  end
-end
-
-target 'study_flatlist_multi_selection-tvOS' do
-  # Pods for study_flatlist_multi_selection-tvOS
-
-  target 'study_flatlist_multi_selection-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
   end
 end
