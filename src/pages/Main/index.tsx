@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, FlatList} from 'react-native';
 import styles from './styles';
-import PhotoList from './PhotoList';
-import {IPhoto} from './PhotoList/PhotoItem';
-import api from 'src/services/api';
+import PhotoItem, {IPhoto} from './PhotoItem';
+import api from '../../services/api';
 
 export default function Main() {
   const [photos, setPhotos] = useState<IPhoto[]>([]);
+  const [selectedPhotos, setSelectedPhotos] = useState<IPhoto[]>([]);
 
   useEffect(() => {
     api.get('/photos').then((response) => {
@@ -16,7 +16,24 @@ export default function Main() {
 
   return (
     <View style={styles.container}>
-      <PhotoList photos={photos} />
+      <FlatList
+        data={photos}
+        keyExtractor={(item) => item.id.toString()}
+        extraData={selectedPhotos}
+        renderItem={({item}) => {
+          return (
+            <PhotoItem
+              photo={item}
+              onPress={() => {
+                item.title = 'Mudou';
+                setSelectedPhotos([...selectedPhotos, item]);
+              }}
+            />
+          );
+        }}
+        ItemSeparatorComponent={() => <View style={styles.separator} />}
+        contentContainerStyle={styles.list}
+      />
     </View>
   );
 }

@@ -9,7 +9,7 @@ export default function Routes() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Main" component={Main} />
+        <Stack.Screen name="Main" component={Main} options={{title: 'Fotos'}} />
       </Stack.Navigator>
     </NavigationContainer>
   );
