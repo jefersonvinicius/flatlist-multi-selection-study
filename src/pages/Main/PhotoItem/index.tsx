@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
-import {View, Image, Text} from 'react-native';
+import React from 'react';
+import {Image, Text} from 'react-native';
 import styles from './styles';
 import {RectButton} from 'react-native-gesture-handler';
 
@@ -8,6 +8,7 @@ export interface IPhoto {
   title: string;
   url: string;
   thumbnailUrl: string;
+  selected: boolean | undefined;
 }
 
 export interface Props {
@@ -19,15 +20,16 @@ export interface Props {
 function PhotoItem({photo, selected, onPress}: Props) {
   console.log('REDERING ITEM: ', photo.id);
 
-  // useEffect(() => {
-  //   console.log(photo.title);
-  // }, [photo.title]);
-
   return (
     <RectButton
       style={[styles.container, {opacity: selected ? 0.5 : 1}]}
+      rippleColor="#fff"
       onPress={onPress}>
-      <Image style={styles.image} source={{uri: photo.thumbnailUrl}} />
+      <Image
+        style={styles.image}
+        source={{uri: photo.thumbnailUrl}}
+        resizeMode="cover"
+      />
       <Text style={styles.title}>{photo.title}</Text>
     </RectButton>
   );
