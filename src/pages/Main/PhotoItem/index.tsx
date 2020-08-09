@@ -12,10 +12,11 @@ export interface IPhoto {
 
 export interface Props {
   photo: IPhoto;
+  selected: boolean;
   onPress: () => void;
 }
 
-function PhotoItem({photo, onPress}: Props) {
+function PhotoItem({photo, selected, onPress}: Props) {
   console.log('REDERING ITEM: ', photo.id);
 
   // useEffect(() => {
@@ -23,11 +24,15 @@ function PhotoItem({photo, onPress}: Props) {
   // }, [photo.title]);
 
   return (
-    <RectButton style={styles.container} onPress={onPress}>
+    <RectButton
+      style={[styles.container, {opacity: selected ? 0.5 : 1}]}
+      onPress={onPress}>
       <Image style={styles.image} source={{uri: photo.thumbnailUrl}} />
       <Text style={styles.title}>{photo.title}</Text>
     </RectButton>
   );
 }
 
-export default React.memo(PhotoItem);
+export default React.memo(PhotoItem, (prev, next) => {
+  return prev.selected === next.selected;
+});

@@ -6,8 +6,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#bbb',
     backgroundColor: '#fff',
-    padding: 10,
     borderRadius: 5,
+    padding: 10,
   },
   image: {
     width: 150,
