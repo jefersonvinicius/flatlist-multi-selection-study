@@ -19,7 +19,6 @@ export default function useLayoutAnimation() {
         },
         delete: {
           type: LayoutAnimation.Types.linear,
-          duration: 50,
           property: LayoutAnimation.Properties.opacity,
         },
         duration: 500,
