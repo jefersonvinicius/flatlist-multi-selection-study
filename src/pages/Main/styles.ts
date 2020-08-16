@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   list: {
+    flexGrow: 1,
     paddingHorizontal: 10,
     paddingVertical: 20,
   },
@@ -21,6 +22,11 @@ const styles = StyleSheet.create({
     bottom: 10,
     right: 10,
     backgroundColor: '#c62828',
+  },
+  fetchingContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
   },
 });
 

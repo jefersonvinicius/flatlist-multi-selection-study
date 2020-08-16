@@ -29,11 +29,17 @@ export default function HeaderRight({
 
   const onSearchIconPress = useCallback(() => {
     configureNextAnimation('easeInEaseOut');
-    setShowInput((prevState) => !prevState);
-  }, [configureNextAnimation]);
+    if (showInput === true) {
+      setTerm('');
+      onSearch('');
+      setShowInput(false);
+    } else {
+      setShowInput(true);
+    }
+  }, [configureNextAnimation, onSearch, showInput]);
 
   const onChangeSearchText = useCallback(
-    (value) => {
+    (value: string) => {
       setTerm(value);
       onSearch(value);
     },
@@ -50,6 +56,7 @@ export default function HeaderRight({
               onChangeText={onChangeSearchText}
               placeholder="Pesquisar..."
               style={styles.serchInput}
+              placeholderTextColor="#bdbdbd"
               autoFocus
             />
           )}

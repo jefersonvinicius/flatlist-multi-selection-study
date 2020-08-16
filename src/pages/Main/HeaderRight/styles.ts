@@ -19,8 +19,9 @@ const styles = StyleSheet.create({
     fontSize: 15,
     height: 40,
     paddingHorizontal: 10,
-    backgroundColor: '#fff',
+    color: '#fff',
     marginRight: 10,
+    backgroundColor: '#424242',
   },
 });
 
