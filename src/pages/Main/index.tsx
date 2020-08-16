@@ -107,7 +107,6 @@ export default function Main() {
     onHeaderSearch,
     amountSelected,
     onHeaderTrashPress,
-
     onHeaderClosePress,
   ]);
 
